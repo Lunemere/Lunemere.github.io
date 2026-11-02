@@ -80,7 +80,7 @@
 
   /* ---------- 2. 卡片：滚动入场 + 3D 倾斜 + 光泽 ---------- */
   (function cards() {
-    var cards = document.querySelectorAll(".category-tile, .article-link--card");
+    var cards = document.querySelectorAll(".category-tile, .article-link--card, .post-row");
     if (!cards.length) return;
     var io = "IntersectionObserver" in window ? new IntersectionObserver(function (es) {
       es.forEach(function (e) {

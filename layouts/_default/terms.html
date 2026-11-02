@@ -1,0 +1,29 @@
+{{/* 分类总览：封面方格；标签总览：彩色标签云。覆盖主题的 terms.html */}}
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "terms" }}
+  <header class="tax-header">
+    <h1 class="tax-title">
+      <span class="tax-icon">{{ if eq .Data.Plural "categories" }}❀{{ else }}#{{ end }}</span>
+      <span class="name-gradient">{{ .Title }}</span>
+    </h1>
+    <p class="tax-sub">
+      {{ with .Description }}{{ . }} · {{ end }}共 {{ len .Data.Terms }} 个{{ .Title }}，{{ len (where site.RegularPages "Section" "post") }} 篇文章
+    </p>
+  </header>
+
+  {{ if eq .Data.Plural "categories" }}
+    {{ partial "category-grid.html" . }}
+  {{ else }}
+    {{ $max := 1 }}
+    {{ range .Data.Terms }}{{ if gt .Count $max }}{{ $max = .Count }}{{ end }}{{ end }}
+    <section class="tag-cloud">
+      {{ range $i, $t := .Data.Terms.Alphabetical }}
+        {{ $w := div (float $t.Count) $max }}
+        <a href="{{ $t.Page.RelPermalink }}" class="tag-pill tag-c{{ mod $i 8 }}"
+          style="--size: {{ add 1 (mul $w 0.9) }}rem; --i: {{ $i }}">
+          <span class="tag-hash">#</span>{{ $t.Page.Title }}<sup>{{ $t.Count }}</sup>
+        </a>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}

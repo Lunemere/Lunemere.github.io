@@ -1,0 +1,49 @@
+{{/* 文章列表：按年分组的时间线。覆盖主题的 list.html（仅 post 栏目） */}}
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+  {{ $pages := .Pages.ByDate.Reverse }}
+  {{ $words := 0 }}
+  {{ range $pages }}{{ $words = add $words .WordCount }}{{ end }}
+  <header class="tax-header">
+    <h1 class="tax-title">
+      <span class="tax-icon">✎</span>
+      <span class="name-gradient">{{ .Title }}</span>
+    </h1>
+    <p class="tax-sub">共 {{ len $pages }} 篇 · 累计 {{ lang.FormatNumber 0 $words }} 字 · 继续加油喵~</p>
+  </header>
+  {{ with .Content }}<section class="prose dark:prose-invert">{{ . }}</section>{{ end }}
+
+  <section class="timeline">
+    {{ range $pages.GroupByDate "2006" }}
+      <h2 class="timeline-year"><span>{{ .Key }}</span><small>{{ len .Pages }} 篇</small></h2>
+      {{ range .Pages }}
+        {{ $cats := .Params.categories | default slice }}
+        <article class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <a href="{{ .RelPermalink }}" class="post-row">
+            <div class="post-thumb">
+              {{ with .Resources.GetMatch "*feature*" }}
+                {{ $t := .Fill "640x360 Center q85" }}
+                <img class="nozoom" src="{{ $t.RelPermalink }}" alt="" loading="lazy">
+              {{ end }}
+              <time class="post-date">{{ .Date.Format "01-02" }}</time>
+            </div>
+            <div class="post-body">
+              <h3 class="post-title">{{ .Title }}</h3>
+              <p class="post-meta">
+                {{ .Date.Format (site.Params.dateFormat | default "2006-01-02") }} · {{ .WordCount }} 字 · {{ .ReadingTime }} 分钟
+              </p>
+              {{ with .Summary | plainify | htmlUnescape }}
+                <p class="post-summary">{{ . | truncate 110 }}</p>
+              {{ end }}
+              <div class="post-tags">
+                {{ range $cats }}<span class="post-cat">❀ {{ . }}</span>{{ end }}
+                {{ range .Params.tags }}{{ if not (in $cats .) }}<span class="post-tag">#{{ . }}</span>{{ end }}{{ end }}
+              </div>
+            </div>
+          </a>
+        </article>
+      {{ end }}
+    {{ end }}
+  </section>
+{{ end }}

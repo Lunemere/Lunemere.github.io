@@ -1,0 +1,23 @@
+{{/* 单个分类/标签页：花哨标题 + 文章卡片。覆盖主题的 term.html */}}
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "term" }}
+  {{ $isCat := eq .Data.Plural "categories" }}
+  <header class="tax-header">
+    <a class="tax-back" href="{{ .Parent.RelPermalink }}">← 全部{{ if $isCat }}分类{{ else }}标签{{ end }}</a>
+    <h1 class="tax-title">
+      <span class="tax-icon">{{ if $isCat }}❀{{ else }}#{{ end }}</span>
+      <span class="name-gradient">{{ .Title }}</span>
+    </h1>
+    <p class="tax-sub">
+      共 {{ len .Pages }} 篇文章{{ with (index .Pages.ByDate.Reverse 0) }} · 最近更新 {{ .Date.Format (site.Params.dateFormat | default "2006-01-02") }}{{ end }}
+    </p>
+  </header>
+  {{ with .Content }}<section class="prose dark:prose-invert">{{ . }}</section>{{ end }}
+
+  <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 mt-6">
+    {{ range (.Paginate .Pages.ByDate.Reverse).Pages }}
+      {{ partial "article-link/card.html" . }}
+    {{ end }}
+  </section>
+  {{ partial "pagination.html" . }}
+{{ end }}

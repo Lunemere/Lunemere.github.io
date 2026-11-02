@@ -1,0 +1,31 @@
+{{/* 分类封面方格：首页和 /categories/ 共用 */}}
+<div class="category-grid grid w-full gap-6 text-start sm:grid-cols-2 lg:grid-cols-3">
+  {{ range site.Taxonomies.categories.ByCount }}
+    {{ $term := .Page }}
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ $cover := "" }}
+    {{ range $pages }}
+      {{ if not $cover }}
+        {{ with .Resources.GetMatch "*feature*" }}{{ $cover = .Fill "800x400 Center q85" }}{{ end }}
+      {{ end }}
+    {{ end }}
+    <a href="{{ $term.RelPermalink }}"
+      class="category-tile group flex flex-col overflow-hidden rounded-xl shadow-lg transition hover:-translate-y-1 hover:shadow-2xl">
+      <div class="h-40 overflow-hidden">
+        {{ with $cover }}
+          <img class="nozoom h-full w-full object-cover transition duration-300 group-hover:scale-105"
+            src="{{ .RelPermalink }}" alt="" loading="lazy">
+        {{ end }}
+      </div>
+      <div class="tile-body flex grow flex-col px-5 py-4">
+        <div class="flex items-baseline justify-between">
+          <span class="text-xl font-bold text-neutral-900 group-hover:text-primary-600 dark:text-neutral-100 dark:group-hover:text-primary-400">{{ $term.Title }}</span>
+          <span class="text-sm text-neutral-500 dark:text-neutral-400">{{ .Count }} 篇</span>
+        </div>
+        <ul class="mt-2 space-y-1 text-sm text-neutral-600 dark:text-neutral-300">
+          {{ range first 3 $pages }}<li class="truncate">· {{ .Title }}</li>{{ end }}
+        </ul>
+      </div>
+    </a>
+  {{ end }}
+</div>
