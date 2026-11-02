@@ -3,6 +3,7 @@ date = '2026-03-04T17:10:55+08:00'
 draft = false
 title = '数据预处理'
 tags = ["深度学习", "PyTorch", "d2l"]
+categories = ["深度学习"]
 
 +++
 

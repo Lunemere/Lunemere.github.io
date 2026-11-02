@@ -3,6 +3,7 @@ date = '2026-02-21T18:30:19+08:00'
 draft = false
 title = '我的第一篇博客'
 tags = ["开始"]
+categories = ["杂记"]
 
 +++
 

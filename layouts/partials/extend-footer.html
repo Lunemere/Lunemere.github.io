@@ -1,0 +1,14 @@
+{{- /* 往下滑时背景逐渐变淡：滚动 0→400px，蒙层透明度 0→1 */ -}}
+<script>
+  (function () {
+    var root = document.documentElement, pending = false;
+    function update() {
+      pending = false;
+      root.style.setProperty("--bg-fade", Math.min(window.scrollY / 400, 1).toFixed(3));
+    }
+    window.addEventListener("scroll", function () {
+      if (!pending) { pending = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  })();
+</script>

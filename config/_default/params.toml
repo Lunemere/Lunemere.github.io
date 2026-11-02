@@ -6,6 +6,7 @@ enableSearch         = true
 enableCodeCopy       = true
 rssFullContent       = true
 defaultBackgroundImage = "img/background.jpg"
+backgroundCanvas       = true   # 背景图固定在每一页后面
 defaultFeaturedImage   = "img/default-feature.jpg"
 highlightCurrentMenuArea = true
 smartTOC             = true
@@ -22,9 +23,8 @@ smartTOCHideUnfocusedChildren = false
     showScrollToTop        = true
 
 [homepage]
-    layout          = "background"
-    layoutBackgroundBlur = true
-    showRecent      = true
+    layout          = "custom"   # layouts/partials/home/custom.html：分类方格
+    showRecent      = false
     showRecentItems = 6
     showMoreLink    = true
     showMoreLinkDest = "/post/"

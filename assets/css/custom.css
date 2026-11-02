@@ -3,3 +3,103 @@
   max-height: 320px;
   object-fit: cover;
 }
+
+/* ===== 全站固定背景：去掉主题默认的大面积白色蒙层，让背景图清晰可见 ===== */
+/* 顶部时背景清晰；往下滑，蒙层随滚动渐显，背景变淡（--bg-fade 由 extend-footer.html 里的脚本设置，0→1） */
+#background-canvas > div {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: var(--bg-fade, 0);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.dark #background-canvas > div {
+  background: rgba(20, 20, 25, 0.6);
+}
+
+/* ===== 文字白底：只包住文字本身 ===== */
+:root {
+  --text-panel-bg: rgba(255, 255, 255, 0.86);
+}
+.dark {
+  --text-panel-bg: rgba(30, 30, 35, 0.84);
+}
+
+/* 小块文字（标题、签名、链接）：贴着文字的圆角底 */
+.text-bg {
+  display: inline-block;
+  background: var(--text-panel-bg);
+  padding: 0.2em 0.75em;
+  border-radius: 0.6em;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* 大块文字（文章正文、目录、列表页标题等）：圆角面板 */
+#single_header,
+.article-content,
+.toc,
+article > footer,
+main > header,
+main > section > p,
+#main-content .prose > ul {
+  background: var(--text-panel-bg);
+  border-radius: 0.9rem;
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+#single_header { margin-bottom: 1.25rem; }
+.article-content { margin-bottom: 2rem; }
+.toc { padding-left: 1rem; }
+
+/* 首页分类方格 */
+.category-tile .tile-body {
+  background: var(--text-panel-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.category-tile > div:first-child:empty {
+  background: linear-gradient(135deg, rgba(255,255,255,.3), rgba(255,255,255,.05));
+}
+
+/* body 自带不透明底色会盖住固定背景，置为透明 */
+html, body { background-color: transparent !important; }
+.text-bg.flex { display: inline-flex; }
+.category-grid { gap: 1.5rem; }
+
+/* 列表页标题：只包住标题文字 */
+main > header { width: fit-content; max-width: 100%; }
+
+/* 顶部导航、页脚：贴着文字的圆角底 */
+.main-menu > a:first-child,
+.main-menu > div.ms-auto,
+#site-footer p {
+  background: var(--text-panel-bg);
+  padding: 0.25em 0.9em;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.main-menu > div.ms-auto { padding: 0 0.5em 0 0.9em; }
+
+/* ===== 加宽页面：缩小两侧留白，正文不再限制在 65 字符宽 ===== */
+body,
+header > .fixed > .relative {
+  max-width: 96rem !important;
+}
+@media (min-width: 1024px) {
+  body,
+  header > .fixed > .relative {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+#single_header,
+.article-content {
+  max-width: none !important;
+}
+/* 正文列占满目录左侧的全部空间 */
+#single_header + section > .min-w-0 {
+  max-width: none;
+  flex: 1 1 0%;
+}

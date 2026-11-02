@@ -4,6 +4,7 @@ draft = false
 math = true
 title = 'Calculus Part1'
 tags = ["数学分析", "知识点总结"]
+categories = ["数学分析"]
 
 +++
 

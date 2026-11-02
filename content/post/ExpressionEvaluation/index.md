@@ -3,6 +3,7 @@ date = '2026-03-07T13:50:50+08:00'
 draft = false
 title = 'ExpressionEvaluation'
 tags = ['算法', '数据结构']
+categories = ["算法与数据结构"]
 
 +++
 # 1. 中缀表达式 (Infix Notation)
