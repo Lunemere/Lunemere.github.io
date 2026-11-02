@@ -1,6 +1,6 @@
 +++
 date = '2026-11-02T06:37:22-08:00'
-draft = true
+draft = false
 title = 'DreamZero 在 Jetson Thor 上的推理加速剖析'
 tags = ["DreamZero", "Thor"]
 categories = ["推理加速"]
