@@ -1,21 +1,35 @@
-baseURL                = "https://Michael20070814.github.io/"
-languageCode           = "zh-cn"
-title                  = "来时路杂记"
-theme = "stack"
-# Theme i18n support
-# See i18n folder for available languages
-defaultContentLanguage = "zh"
-# Set hasCJKLanguage to true if DefaultContentLanguage is a CJK language
-# This will make .Summary and .WordCount behave correctly
+baseURL                = "https://lunemere.github.io/"
+theme                  = "blowfish"
+defaultContentLanguage = "zh-cn"
 hasCJKLanguage         = true
-
+enableRobotsTXT        = true
+enableEmoji            = true
+summaryLength          = 0
 
 [pagination]
-    pagerSize = 5
+    pagerSize = 10
 
 [permalinks]
     post = "/p/:slug/"
     page = "/:slug/"
 
-[services.disqus]
-    shortname = "hugo-theme-stack"
+[taxonomies]
+    tag      = "tags"
+    category = "categories"
+    series   = "series"
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]   # JSON 用于站内搜索
+
+[related]
+    threshold = 0
+    toLower   = false
+    [[related.indices]]
+        name   = "tags"
+        weight = 100
+    [[related.indices]]
+        name   = "categories"
+        weight = 100
+    [[related.indices]]
+        name   = "series"
+        weight = 50

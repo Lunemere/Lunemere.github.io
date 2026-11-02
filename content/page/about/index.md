@@ -1,13 +1,11 @@
 ---
 title: "关于"
 date: 2026-02-21
-layout: "about"
 slug: "about"
-menu:
-    main:
-        weight: 2
-        params:
-            icon: user
+showDate: false
+showReadingTime: false
+showWordCount: false
+showTableOfContents: false
 ---
 
 ## 你好，我是 Michael 👋
@@ -31,5 +29,5 @@ menu:
 
 ## 联系我
 
-- GitHub：[Michael20070814](https://github.com/Michael20070814)
+- GitHub：[Lunemere](https://github.com/Lunemere)
 - 邮箱：Michael20070814@outlook.com

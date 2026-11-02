@@ -1,0 +1,6 @@
+{{- /* 只有页面里有公式时才加载 KaTeX 样式（用主题自带的本地文件，国内访问不依赖 CDN） */ -}}
+{{- if .Page.Store.Get "hasMath" }}
+  {{- $css := resources.Get "lib/katex/katex.min.css" | resources.Fingerprint "sha512" }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{- range resources.Match "lib/katex/fonts/*" }}<!-- {{ .RelPermalink }} -->{{ end }}
+{{- end }}

@@ -1,41 +1,62 @@
-mainSections   = ["post"]
-rssFullContent = true
-favicon        = "img/avatar.jpg"
+mainSections         = ["post"]
+colorScheme          = "blowfish"   # 可选: blowfish congo ocean forest fire slate neon avocado autumn marvel noir github ...
+defaultAppearance    = "light"
+autoSwitchAppearance = true         # 跟随系统深浅色
+enableSearch         = true
+enableCodeCopy       = true
+rssFullContent       = true
+defaultBackgroundImage = ""
+
+[header]
+    layout = "fixed-fill-blur"
 
 [footer]
-    since = 2026
+    showMenu               = true
+    showCopyright          = true
+    showThemeAttribution   = true
+    showAppearanceSwitcher = true
+    showScrollToTop        = true
 
-[sidebar]
-    emoji    = "✏️"
-    subtitle = "山林从不向四季起誓，荣枯随缘"
-    avatar   = "img/avatar.jpg"
+[homepage]
+    layout          = "profile"
+    showRecent      = true
+    showRecentItems = 6
+    showMoreLink    = true
+    showMoreLinkDest = "/post/"
+    cardView        = true
+    cardViewScreenWidth = false
 
 [article]
-    [article.license]
-        enabled = true
-        default = "Licensed under CC BY-NC-SA 4.0"
-    [article.encrypt]
-        enabled = true
+    showDate               = true
+    showDateUpdated        = false
+    showAuthor             = true
+    showHero               = false
+    showBreadcrumbs        = false
+    showDraftLabel         = true
+    showHeadingAnchors     = true
+    showPagination         = true
+    showReadingTime        = true
+    showReadingProgress    = true
+    showTableOfContents    = true
+    showTaxonomies         = true
+    showWordCount          = true
+    showZenMode            = true
+    showRelatedContent     = true
+    relatedContentLimit    = 3
 
-[widgets]
-    homepage = [
-        { type = "search" },
-        { type = "archives", params = { limit = 5 } },
-        { type = "categories", params = { limit = 10 } },
-        { type = "tag-cloud", params = { limit = 10 } },
-    ]
-    page     = [{ type = "toc" }]
+[list]
+    showBreadcrumbs = false
+    showSummary     = true
+    showCards       = false
+    groupByYear     = true
+    cardView        = false
 
-[comments]
-    # See complete configuration in config/_default/params.toml
-    enabled  = true
-    provider = "disqus"
+[taxonomy]
+    showTermCount = true
 
-# GDPR Cookie Consent Configuration
-# When enabled, analytics and functional cookies require user consent
-[cookies]
-    enabled = false
+[term]
+    showTableOfContents = false
+    groupByYear         = false
 
-    [cookies.categories]
-        analytics  = true
-        functional = true
+[sitemap]
+    excludedKinds = ["taxonomy", "term"]
