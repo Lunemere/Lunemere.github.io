@@ -8,7 +8,7 @@ showWordCount: false
 showTableOfContents: false
 ---
 
-## 你好，我是 Michael 👋
+## 你好，我是 Lunemere 👋
 
 我是一名就读于北京航空航天大学计算机专业的学生，热爱探索科学
 
