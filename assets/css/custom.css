@@ -1,0 +1,5 @@
+/* 文章页顶部封面：限制高度，裁切填充 */
+.single_hero_round {
+  max-height: 320px;
+  object-fit: cover;
+}

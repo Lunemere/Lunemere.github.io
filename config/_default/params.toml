@@ -1,11 +1,15 @@
 mainSections         = ["post"]
-colorScheme          = "blowfish"   # 可选: blowfish congo ocean forest fire slate neon avocado autumn marvel noir github ...
+colorScheme          = "congo"   # 可选: blowfish congo ocean forest fire slate neon avocado autumn marvel noir github ...
 defaultAppearance    = "light"
 autoSwitchAppearance = true         # 跟随系统深浅色
 enableSearch         = true
 enableCodeCopy       = true
 rssFullContent       = true
-defaultBackgroundImage = ""
+defaultBackgroundImage = "img/background.jpg"
+defaultFeaturedImage   = "img/default-feature.jpg"
+highlightCurrentMenuArea = true
+smartTOC             = true
+smartTOCHideUnfocusedChildren = false
 
 [header]
     layout = "fixed-fill-blur"
@@ -18,7 +22,8 @@ defaultBackgroundImage = ""
     showScrollToTop        = true
 
 [homepage]
-    layout          = "profile"
+    layout          = "background"
+    layoutBackgroundBlur = true
     showRecent      = true
     showRecentItems = 6
     showMoreLink    = true
@@ -30,7 +35,10 @@ defaultBackgroundImage = ""
     showDate               = true
     showDateUpdated        = false
     showAuthor             = true
-    showHero               = false
+    showHero               = true
+    heroStyle              = "big"
+    layoutBackgroundBlur   = true
+    layoutBackgroundHeaderSpace = false
     showBreadcrumbs        = false
     showDraftLabel         = true
     showHeadingAnchors     = true
@@ -47,14 +55,16 @@ defaultBackgroundImage = ""
 [list]
     showBreadcrumbs = false
     showSummary     = true
-    showCards       = false
-    groupByYear     = true
-    cardView        = false
+    showCards       = true
+    groupByYear     = false
+    cardView        = true
 
 [taxonomy]
+    cardView      = false
     showTermCount = true
 
 [term]
+    cardView            = true
     showTableOfContents = false
     groupByYear         = false
 
