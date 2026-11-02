@@ -12,3 +12,6 @@
     update();
   })();
 </script>
+{{- /* 花哨效果：花瓣、卡片动效、打字机、鼠标特效（assets/js/fancy.js） */ -}}
+{{- $fancy := resources.Get "js/fancy.js" | resources.Minify | resources.Fingerprint "sha512" }}
+<script defer src="{{ $fancy.RelPermalink }}" integrity="{{ $fancy.Data.Integrity }}"></script>

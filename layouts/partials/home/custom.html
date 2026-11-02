@@ -9,10 +9,10 @@
       {{ end }}
     {{ end }}
     <h1 class="text-bg mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
-      {{ site.Params.Author.name | default site.Title }}
+      <span class="name-gradient">{{ site.Params.Author.name | default site.Title }}</span>
     </h1>
     {{ with site.Params.Author.headline }}
-      <h2 class="text-bg mt-1 text-xl text-neutral-700 dark:text-neutral-300">{{ . | markdownify }}</h2>
+      <h2 class="text-bg mt-1 text-xl text-neutral-700 dark:text-neutral-300"><span id="typewriter" data-text="{{ . | plainify }}">{{ . | markdownify }}</span><span class="tw-cursor" aria-hidden="true">|</span></h2>
     {{ end }}
     {{ with site.Params.Author.links }}
       <div class="text-bg mt-4 flex flex-wrap justify-center text-2xl">
