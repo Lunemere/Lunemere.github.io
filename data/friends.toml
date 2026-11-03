@@ -1,0 +1,11 @@
+# 友链列表：想加友链就复制一个 [[friends]] 块，改成对方的信息即可。
+# name  : 站点名（必填）
+# url   : 链接（必填）
+# desc  : 一句话介绍（可选）
+# avatar: 头像图片 URL（可选，不填则用名字首字显示）
+
+[[friends]]
+name   = "MikeDsr"
+url    = "https://mikedsr.top/"
+desc   = "一名英俊潇洒，风流倜傥，才高八斗的北航学子"
+avatar = "https://mikedsr.top/favicon.svg"

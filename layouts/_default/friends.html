@@ -1,0 +1,25 @@
+{{/* 友链页：卡片数据来自 data/friends.toml */}}
+{{ define "main" }}
+  <header class="tax-header">
+    <h1 class="tax-title">
+      <span class="tax-icon">✦</span>
+      <span class="name-gradient">{{ .Title }}</span>
+    </h1>
+    <p class="tax-sub">{{ with .Description }}{{ . }} · {{ end }}共 {{ len site.Data.friends.friends }} 位朋友</p>
+  </header>
+
+  <section class="friend-grid">
+    {{ range site.Data.friends.friends }}
+      <a class="friend-card" href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer">
+        {{ if .avatar }}<img class="friend-avatar" src="{{ .avatar | safeURL }}" alt="" loading="lazy">
+        {{ else }}<span class="friend-avatar friend-avatar-text">{{ substr .name 0 1 }}</span>{{ end }}
+        <span class="friend-info">
+          <span class="friend-name">{{ .name }}</span>
+          {{ with .desc }}<span class="friend-desc">{{ . }}</span>{{ end }}
+        </span>
+      </a>
+    {{ end }}
+  </section>
+
+  {{ with .Content }}<div class="article-content prose">{{ . }}</div>{{ end }}
+{{ end }}
