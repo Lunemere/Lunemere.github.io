@@ -9,3 +9,10 @@ name   = "MikeDsr"
 url    = "https://mikedsr.top/"
 desc   = "一名英俊潇洒，风流倜傥，才高八斗的北航学子"
 avatar = "https://mikedsr.top/favicon.svg"
+
+[[friends]]
+name   = "Xingyu Liu"
+url    = "https://xingyuliu456.github.io/"
+desc   = "宠辱不惊，闲看庭前花开花落；去留无意，漫随天外云卷云舒。"
+avatar = "https://xingyuliu456.github.io/img/avatar.jpg"
+
