@@ -82,7 +82,7 @@ main > header { width: fit-content; max-width: 100%; }
 }
 .main-menu > div.ms-auto { padding: 0 0.5em 0 0.9em; }
 
-/* ===== 加宽页面：缩小两侧留白，正文不再限制在 65 字符宽 ===== */
+/* ===== 页面保留宽布局，文章使用适合长文阅读的独立宽度 ===== */
 body,
 header > .fixed > .relative {
   max-width: 96rem !important;
@@ -94,14 +94,33 @@ header > .fixed > .relative {
     padding-right: 3rem !important;
   }
 }
-#single_header,
-.article-content {
-  max-width: none !important;
+article:has(> #single_header) {
+  max-width: 52rem;
+  margin-inline: auto;
 }
-/* 正文列占满目录左侧的全部空间 */
+#single_header,
+#single_header + section .article-content {
+  width: 100%;
+  max-width: 52rem !important;
+  box-sizing: border-box;
+}
+/* 正文最多 832px；目录在桌面端使用右侧的额外空间 */
 #single_header + section > .min-w-0 {
-  max-width: none;
+  width: 100%;
+  max-width: 52rem;
   flex: 1 1 0%;
+}
+/* 相关文章与翻页面板之间留出独立间距，并与正文对齐 */
+#single_header ~ footer {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 52rem;
+  box-sizing: border-box;
+}
+@media (min-width: 1024px) {
+  article:has(> #single_header):has(.toc) {
+    max-width: 72rem;
+  }
 }
 
 /* ===================== 花哨效果（配合 assets/js/fancy.js） ===================== */
