@@ -239,3 +239,7 @@ wire [32:0] resAdd = extA + extB;
 ---
 
 到这里，整个带异常与中断处理的 `CPU` 数据通路就彻底串起来了！其实只要把 `ExcUnit` 和 `CP0` 拆解清楚，你会发现加异常和我们之前在 `P3` / `P4` 加普通指令的流程几乎一模一样，祝大家都能顺利的一把过点！
+
+参考仓库：[23年高工](https://github.com/cjhCoder7/BUAA_CO), [23年高工](https://github.com/nxjiang-jnx/MIPS_CPU)
+
+封面图来源：[可爱的 Nahida](https://www.hoyolab.com/article/13095127)
