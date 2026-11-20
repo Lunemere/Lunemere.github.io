@@ -1,0 +1,13 @@
+{{- /*
+  霍夫曼树构建过程可视化
+
+  用法：在 .md 里写一个 huffman 短代码（尖括号形式）。
+  符号与频率在 assets/js/huffman.js 顶部的 DATA 里改。
+*/ -}}
+{{- $css := resources.Get "css/huffman.css" | resources.Minify | resources.Fingerprint "sha512" -}}
+{{- $js := resources.Get "js/huffman.js" | resources.Minify | resources.Fingerprint "sha512" -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<div class="huffman" role="group" aria-label="霍夫曼树构建过程可视化">
+  <noscript>启用 JavaScript 后可以交互查看霍夫曼树的构建过程。</noscript>
+</div>
+<script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
